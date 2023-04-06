@@ -19,13 +19,14 @@ public:
     }
 
     // Lägg till ett element
-    void push(T elem) {
-        auto pos = std::find_if(pq.begin(), pq.end(), [&](const T& e) {
-            return m_comparer(elem, e);
+    void push(T e) {
+        auto pos = std::find_if(pq.begin(), pq.end(), [&](const T& x) -> bool {
+            return m_comparer(e, x);
         });
-        pq.insert(pos, elem);
+        pq.insert(pos, e);
+
         /*
-        pq.push_back(elem);
+        pq.push_back(e);
         std::sort(pq.begin(), pq.end(), m_comparer);
         */
     }
